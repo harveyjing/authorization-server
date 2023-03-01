@@ -1,0 +1,3 @@
+rootProject.name = 'authorization-server'
+
+include ':react-frontend', ':spring-backend'
