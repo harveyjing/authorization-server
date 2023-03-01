@@ -12,12 +12,7 @@ public class UserConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails userDetails = User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("pass")
-                .roles("USER")
-                .build();
-
+        UserDetails userDetails = User.withUsername("user").password("pass").roles("USER").build();
         return new InMemoryUserDetailsManager(userDetails);
     }
 }
