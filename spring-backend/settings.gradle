@@ -1,0 +1,6 @@
+rootProject.name = 'authorization-server-backend'
+
+// include 'frontend', 'backend'
+
+// project(":frontend").projectDir = file("react-frontend")
+// project(":backend").projectDir = file("spring-backend")

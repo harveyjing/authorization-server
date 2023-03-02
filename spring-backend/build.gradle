@@ -17,19 +17,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation "org.springframework.security:spring-security-oauth2-authorization-server:1.0.1"
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly project(":frontend")
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 }
-
-task copyWebApp(type: Copy) {
-    from "$rootDir/react-frontend/build"
-    into "$rootDir/spring-backend/build/resources/main/static/."
-}
-
-bootJar.dependsOn(copyWebApp)
-compileJava.dependsOn ":frontend:build"
 
 tasks.named('test') {
     useJUnitPlatform()
