@@ -3,9 +3,10 @@ package com.sololude.authorizationserver.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@RequestMapping("/login1")
+@RestController
+@RequestMapping("/login")
 public class LoginController {
 
     @GetMapping("/sub")
@@ -16,6 +17,6 @@ public class LoginController {
 
     @GetMapping
     public String hello() {
-        return "hello";
+        return "hello11";
     }
 }
