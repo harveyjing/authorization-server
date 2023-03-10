@@ -22,8 +22,8 @@ export async function GET(request: Request) {
   const code_challenge = generators.codeChallenge(code_verifier);
 
   const url = client.authorizationUrl({
-    scope: "openid email profile",
-    resource: "https://my.api.example.com/resource/32178",
+    scope: "user:email",
+    // resource: "https://my.api.example.com/resource/32178",
     code_challenge,
     code_challenge_method: "S256",
   });
