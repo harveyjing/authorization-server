@@ -1,21 +1,12 @@
+import { GithubClient, GithubIssuer } from "@/utils/Issuer";
 import { redirect } from "next/navigation";
 import { Issuer, generators } from "openid-client";
 
 export async function GET(request: Request) {
-  const githubIssuer = await Issuer.discover(
-    "https://token.actions.githubusercontent.com/.well-known/openid-configuration"
-  );
-  githubIssuer["authorization_endpoint"] = "https://github.com/login/oauth/authorize"
-  console.log("Discovered issuer %s %O", githubIssuer.issuer, githubIssuer);
 
-  const client = new githubIssuer.Client({
-    client_id: "ee8c323606f53878a036",
-    client_secret: "385c7db670094e628621641b6f699063dccc6799",
-    redirect_uris: ["http://localhost:3000/callback"],
-    response_types: ["code"],
-    // id_token_signed_response_alg (default "RS256")
-    // token_endpoint_auth_method (default "client_secret_basic")
-  });
+  const githubIssuer = GithubIssuer()
+  console.log("Discovered issuer %s %O", githubIssuer.issuer, githubIssuer.metadata);
+  const client = GithubClient(githubIssuer)
 
   const code_verifier = generators.codeVerifier();
 
@@ -28,7 +19,7 @@ export async function GET(request: Request) {
     code_challenge_method: "S256",
   });
   console.log(url);
-  
+
   return redirect(url);
 }
 
