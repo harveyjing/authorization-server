@@ -22,27 +22,3 @@ export async function GET(request: Request) {
 
   return redirect(url);
 }
-
-// Issuer.discover("http://localhost:3000/oidc").then(function (oidcIssuer) {
-//   var client = new oidcIssuer.Client({
-//     client_id: "oidcCLIENT",
-//     client_secret: "client_super_secret",
-//     redirect_uris: ["http://localhost:8080/login/callback"],
-//     response_types: ["code"],
-//   });
-//   passport.use(
-//     "oidc",
-//     new Strategy(
-//       { client, passReqToCallback: true },
-//       (req, tokenSet, userinfo, done) => {
-//         console.log("tokenSet", tokenSet);
-//         console.log("userinfo", userinfo);
-//         // do whatever you want with tokenset and userinfo
-//         req.session.tokenSet = tokenSet;
-//         req.session.userinfo = userinfo;
-
-//         return done(null, tokenSet.claims());
-//       }
-//     )
-//   );
-// });

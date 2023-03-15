@@ -1,7 +1,11 @@
+'use client'
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
+import HeaderLogin from "./header-login";
 
 export default function Header() {
+  const { data, status } = useSession();
   return (
     <div className="flex justify-between">
       <nav>
@@ -10,8 +14,7 @@ export default function Header() {
         <Link href="/api/hello">resume</Link>
       </nav>
       <div>
-        <a href={""} className="bg-red-300 rounded p-2 m-1">Sign Up</a>
-        <a href={"/api/login/github"} className="bg-green-500 rounded p-2 m-1">Sing In</a>
+       <HeaderLogin />
       </div>
     </div>
   );

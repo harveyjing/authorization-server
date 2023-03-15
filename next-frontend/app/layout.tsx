@@ -1,5 +1,6 @@
 import "./globals.css";
-import Header from "./Header";
+import Header from "./header";
+import MySessionProvider from "./session-provider";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,8 +15,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header></Header>
-        {children}
+        <div className="my-9 mx-3">
+          <MySessionProvider>
+            <Header></Header>
+            {children}
+          </MySessionProvider>
+        </div>
       </body>
     </html>
   );
